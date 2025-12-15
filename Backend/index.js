@@ -40,7 +40,7 @@ if (process.env.NODE_ENV === "production") {
 
   app.use((req, res) => {
     res.sendFile(
-      path.join(dirPath, "Frontend", "dist", "index.html")
+      path.join(dirPath, "frontend", "dist", "index.html")
     );
   });
 }
