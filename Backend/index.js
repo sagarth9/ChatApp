@@ -7,6 +7,7 @@ import path from "path";
 import userRoute from "./route/user.route.js";
 import messageRoute from "./route/message.route.js";
 import { app, server } from "./SocketIO/server.js";
+import { fileURLToPath } from "url";
 
 dotenv.config();
 
@@ -33,17 +34,21 @@ app.use("/api/message", messageRoute);
 
 // deployment
 
-if (process.env.NODE_ENV === "production") {
-  const dirPath = path.resolve();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-  app.use(express.static(path.join(dirPath, "Frontend", "dist")));
+if (process.env.NODE_ENV === "production") {
+  const rootPath = path.join(__dirname, ".."); // ⬅ go to project root
+
+  app.use(express.static(path.join(rootPath, "frontend", "dist")));
 
   app.use((req, res) => {
     res.sendFile(
-      path.join(dirPath, "frontend", "dist", "index.html")
+      path.join(rootPath, "frontend", "dist", "index.html")
     );
   });
 }
+
 
 
 server.listen(PORT, () => {
