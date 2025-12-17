@@ -18,9 +18,8 @@ function User({ user }) {
 
   return (
     <div
-      className={`hover:bg-slate-600 duration-300 ${
-        isSelected ? "bg-slate-700" : ""
-      }`}
+      className={`hover:bg-slate-600 duration-300 ${isSelected ? "bg-slate-700" : ""
+        }`}
       onClick={() => setSelectedConversation(user)}
     >
       <div className="flex items-center space-x-4 px-6 py-3 cursor-pointer">
@@ -35,13 +34,15 @@ function User({ user }) {
 
         {/* User Info */}
         <div className="min-w-0">
-          <h1 className="font-bold truncate">{user.name}</h1>
+          <h1 className="font-bold truncate">
+            {user.fullname || user.name || "Unknown User"}
+          </h1>
+
 
           {/* 🔥 Only Text: Online / Offline */}
           <span
-            className={`text-sm font-semibold ${
-              isOnline ? "text-green-400" : "text-gray-400"
-            }`}
+            className={`text-sm font-semibold ${isOnline ? "text-green-400" : "text-gray-400"
+              }`}
           >
             {isOnline ? "Online" : "Offline"}
           </span>
