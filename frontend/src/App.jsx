@@ -5,8 +5,6 @@ import Signup from "./components/Signup";
 import Login from "./components/Login";
 import { useAuth } from "./context/AuthProvider";
 import { Toaster } from "react-hot-toast";
-import Logout from "./home/left1/Logout";
-
 import { Navigate, Route, Routes } from "react-router-dom";
 function App() {
   const [authUser, setAuthUser] = useAuth();
@@ -18,14 +16,24 @@ function App() {
           path="/"
           element={
             authUser ? (
-              <div className="flex h-screen">
-                <Logout />
-                <Left />
-                <Right />
+              <div className="drawer lg:drawer-open h-screen">
+                <input
+                  id="chat-drawer"
+                  type="checkbox"
+                  className="drawer-toggle"
+                />
+                <div className="drawer-content flex flex-col">
+                  <Right />
+                </div>
+                <div className="drawer-side">
+                  <label
+                    htmlFor="chat-drawer"
+                    className="drawer-overlay"
+                    aria-label="Close sidebar"
+                  ></label>
+                  <Left />
+                </div>
               </div>
-
-
-            
             ) : (
               <Navigate to={"/login"} />
             )
