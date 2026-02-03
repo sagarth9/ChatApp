@@ -1,20 +1,23 @@
 import React from "react";
 import Search from "./Search";
 import Users from "./Users";
-import Logout from "../left1/Logout";
+ 
 
 function Left() {
   return (
-    <div className="w-72 sm:w-80 lg:w-[320px] bg-black text-gray-300 h-full flex flex-col">
-      <div className="flex items-center justify-between px-4 py-4">
-        <h1 className="font-bold text-2xl sm:text-3xl">Chats</h1>
-        <Logout />
-      </div>
+    <div className="w-[30%] bg-black text-gray-300">
+      <h1 className="font-bold text-3xl p-2 px-11">Chats</h1>
+    {/* <div className="w-full   bg-black text-gray-300"> */}
       <Search />
-      <div className="flex-1 overflow-y-auto">
+      <div
+        className=" flex-1  overflow-y-auto"
+        style={{ minHeight: "calc(84vh - 10vh)" }}
+      >
         <Users />
       </div>
+   
     </div>
+  
   );
 }
 
