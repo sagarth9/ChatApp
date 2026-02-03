@@ -22,16 +22,14 @@ function Logout() {
   };
   return (
     <>
-      <div className="w-[4%]   bg-slate-950 text-white  flex flex-col justify-end ">
-        <div className="p-3  align-bottom ">
-          <button>
-            <TbLogout2
-              className="text-5xl p-2 hover:bg-gray-600 rounded-lg duration-300"
-              onClick={handleLogout}
-            />
-          </button>
-        </div>
-      </div>
+      <button
+        type="button"
+        onClick={handleLogout}
+        className="p-2 rounded-lg hover:bg-gray-600 duration-300"
+        aria-label="Log out"
+      >
+        <TbLogout2 className="text-2xl sm:text-3xl" />
+      </button>
     </>
   );
 }

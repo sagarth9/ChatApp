@@ -1,8 +1,8 @@
 import React from "react";
 import useConversation from "../../stateManage/useConversation.js";
 import { useSocketContext } from "../../context/SocketContext.jsx";
-import { CiMenuFries } from "react-icons/ci";
 import userImg from "../../assets/user.png";
+import { CiMenuFries } from "react-icons/ci";
 
 function Chatuser() {
   const { selectedConversation } = useConversation();
@@ -12,16 +12,25 @@ function Chatuser() {
   };
 
   return (
-    <div className=" pl-5 pt-5 h-[13vh] flex space-x-4 bg-gray-700 hover:bg-gray-600 duration-300">
-      <div>
-        <div className="avatar online">
-          <div className="w-14 rounded-full">
-            <img src={selectedConversation.avatar || userImg} />
-          </div>
+    <div className="px-4 py-3 flex items-center gap-4 bg-gray-700 hover:bg-gray-600 duration-300">
+      <label
+        htmlFor="chat-drawer"
+        className="btn btn-ghost drawer-button lg:hidden"
+        aria-label="Open chats"
+      >
+        <CiMenuFries className="text-white text-xl" />
+      </label>
+      <div className="avatar online">
+        <div className="w-12 rounded-full">
+          <img src={selectedConversation.avatar || userImg} alt="user" />
         </div>
       </div>
-      <div>
-        <h1 className="text-xl">{selectedConversation.fullname || selectedConversation.name || "Unknown User"}</h1>
+      <div className="min-w-0">
+        <h1 className="text-lg sm:text-xl truncate">
+          {selectedConversation.fullname ||
+            selectedConversation.name ||
+            "Unknown User"}
+        </h1>
         <span className="text-sm">
           {getOnlineUsersStatus(selectedConversation._id)}
         </span>

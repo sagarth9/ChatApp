@@ -12,23 +12,18 @@ function Right() {
     return setSelectedConversation(null);
   }, [setSelectedConversation]);
   return (
-    <div className="w-full bg-slate-900 text-gray-300">
-      <div>
-        {!selectedConversation ? (
-          <NoChatSelected />
-        ) : (
-          <>
-            <Chatuser />
-            <div
-              className=" flex-1 overflow-y-auto"
-              style={{ maxHeight: "calc(88vh - 8vh)" }}
-            >
-              <Messages />
-            </div>
-            <Typesend />
-          </>
-        )}
-      </div>
+    <div className="w-full bg-slate-900 text-gray-300 h-full flex flex-col">
+      {!selectedConversation ? (
+        <NoChatSelected />
+      ) : (
+        <>
+          <Chatuser />
+          <div className="flex-1 overflow-y-auto">
+            <Messages />
+          </div>
+          <Typesend />
+        </>
+      )}
     </div>
   );
 }
@@ -40,14 +35,14 @@ const NoChatSelected = () => {
   console.log(authUser);
   return (
     <>
-      <div className="relative">
+      <div className="relative h-full flex flex-col">
         <label
-          htmlFor="my-drawer-2"
+          htmlFor="chat-drawer"
           className="btn btn-ghost drawer-button lg:hidden absolute left-5"
         >
           <CiMenuFries className="text-white text-xl" />
         </label>
-        <div className="flex h-screen items-center justify-center">
+        <div className="flex flex-1 min-h-[60vh] items-center justify-center px-6">
           <h1 className="text-center">
             Welcome{" "}
             <span className="font-semibold text-xl">
